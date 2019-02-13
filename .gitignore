@@ -1,7 +1,6 @@
 env/
 .env
 .vscode/
-.project
-.pydevproject
+
 
 __pycache__

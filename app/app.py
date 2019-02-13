@@ -11,16 +11,17 @@ from patients import patient_bp
 
 app = Flask(__name__)
 
+# add configurations
+app.config.from_pyfile('settings.py')
+
 # register your blueprints here
 app.register_blueprint(patient_bp)
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+mysqlconnector://root:root@localhost:3306/medicaldb')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db.init_app(app)
-
+# initialise database
+with app.app_context():
+    db.init_app(app)
+    db.create_all()
+    db.session.commit()
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
