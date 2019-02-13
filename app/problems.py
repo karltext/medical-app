@@ -11,13 +11,13 @@ problem_bp = Blueprint('problems', __name__, url_prefix='/problems')
 
 # /problems/list
 @problem_bp.route('/list')
-def view_patients():
+def view_problems():
     problems = db.session.query(Problem).all()
     return jsonify([p.to_dict() for p in problems])
 
 # /problems/register
 @problem_bp.route('/register', methods=['POST'])
-def register_patient():
+def register_problem():
     p = Problem(**request.form)
     db.session.add(p)
     db.session.commit()
