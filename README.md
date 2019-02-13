@@ -4,7 +4,7 @@
 ```
 $ virtualenv env
 $ env\Scripts\activate
-$ pip install -r requirments.txt
+$ pip install -r requirements.txt
 ```
 
 ## to run
