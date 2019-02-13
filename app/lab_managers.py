@@ -11,13 +11,13 @@ lab_manager_bp = Blueprint('lab_managers', __name__, url_prefix='/lab_managers')
 
 # /lab_managers/list
 @lab_manager_bp.route('/list')
-def view_patients():
+def view_lab_manager():
     lab_managers = db.session.query(LabManager).all()
     return jsonify([p.to_dict() for p in lab_managers])
 
 # /lab_managers/register
 @lab_manager_bp.route('/register', methods=['POST'])
-def register_patient():
+def register_lab_manager():
     p = LabManager(**request.form)
     db.session.add(p)
     db.session.commit()
