@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import request
 from flask import jsonify
+from flask import render_template
 
 # import your required models
 from models import db
@@ -15,7 +16,9 @@ patient_bp = Blueprint('profiles', __name__, url_prefix='/patients')
 @patient_bp.route('/list')
 def view_patients():
     patients = db.session.query(Patient).all()
-    return jsonify([p.to_dict() for p in patients])
+    print(patients)
+    print([p.name for p in patients])
+    return render_template('profile.html', patients=patients)
 
 # /patients/register
 @patient_bp.route('/register', methods=['POST'])
