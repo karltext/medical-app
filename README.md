@@ -12,3 +12,7 @@ $ pip install -r requirements.txt
 ```
 $ python app/app.py
 ```
+
+
+## Docs
+http://flask.pocoo.org/docs/1.0/blueprints/
