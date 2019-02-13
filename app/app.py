@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import render_template
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -13,16 +14,19 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-@app.route('/profile/view/<profile_id>')
-def view_profile(profile_id):
-    p = model.Profile(name="dave") 
-    db.session.add(p)
-    db.session.commit()
-    return "ok"
+@app.route('/profiles/list')
+def list_profiles():
+    profiles = model.Profile.query.all()
+    return render_template('base.html', profiles=profiles)
 
-@app.route('/profile/create', methods=['POST'])
+# @app.route('/profiles/view/<profile_id>')
+# def view_profile(profile_id):
+#     profiles = Product.query.all()
+#     return "ok"
+
+@app.route('/profiles/create', methods=['POST'])
 def create_profile():
-    p = Profile(name="dave") 
+    p = model.Profile(name="dave") 
     db.session.add(p)
     db.session.commit()
     pass
