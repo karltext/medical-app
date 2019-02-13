@@ -4,6 +4,11 @@ from flask_sqlalchemy import declarative_base
 # Notes:
 # https://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html
 # https://github.com/sloria/cookiecutter-flask
+# http://flask-sqlalchemy.pocoo.org/2.3/queries/
+
+#### TODO:
+# redesign model structure
+# Records as a core unit
 
 db = SQLAlchemy()
 Base = declarative_base()
@@ -30,14 +35,14 @@ diagnosis_table = db.Table('diagosis',
 
 
 class LabManager(db.Model, Serializable):
-    __tablename__ = "lab_manager"
+    __tablename__ = 'lab_manager'
     lm_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     location = db.Column(db.String(50))
 
 
 class Patient(db.Model, Serializable):
-    __tablename__ = "patient"
+    __tablename__ = 'patient'
     patient_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     age = db.Column(db.Integer)
@@ -45,7 +50,7 @@ class Patient(db.Model, Serializable):
     height = db.Column(db.Float)
     weight = db.Column(db.Float)
     location = db.Column(db.String(50))
-    problems = db.relationship("Problem", 
+    problems = db.relationship('Problem', 
                                 secondary=diagnosis_table, 
                                 lazy='subquery')
 

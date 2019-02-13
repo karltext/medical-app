@@ -15,4 +15,4 @@ $ python app/app.py
 
 
 ## Docs
-http://flask.pocoo.org/docs/1.0/blueprints/
+http://flask-sqlalchemy.pocoo.org
