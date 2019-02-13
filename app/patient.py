@@ -22,6 +22,7 @@ class Patient(db.Model):
     gender = db.Column('patient_gender',db.String(50))
     height = db.Column(db.Float)
     weight = db.Column(db.Float)
+    location = db.Column("patient_location",db.String(50))
     
     
     def __init__(self,params):
@@ -30,17 +31,18 @@ class Patient(db.Model):
         self.gender = params["gender"]
         self.height = params["height"]
         self.weight = params["weight"]
+        self.location = params["location"]
         pass
     
 @app.route("/patient-information")
 def example_patient():
 #     patient1 = Patient({"name":"John","age":57,"gender":"Non-Binary","height":200,"weight":80})
 #     db.session.add(patient1)
-    db.session.add(Patient({"name":"John","age":57,"gender":"Non-Binary","height":200,"weight":80}))
+    db.session.add(Patient({"name":"John","age":57,"gender":"Non-Binary","height":200,"weight":80,"location":"Leeds"}))
     db.session.commit()
     patient = Patient.query.all()
     for p in patient:
-        print("patient_id: ",p.patient_id,"name: ",p.name,"age: ",p.age,"gender",p.gender,"height: ",p.height,"weight: ",p.weight)
+        print("patient_id: ",p.patient_id,"name: ",p.name,"age: ",p.age,"gender",p.gender,"height: ",p.height,"weight: ",p.weight,"location",p.location)
       
    
 
