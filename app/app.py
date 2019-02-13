@@ -16,6 +16,7 @@ app.config.from_pyfile('settings.py')
 
 # register your blueprints here
 app.register_blueprint(patient_bp)
+app.register_blueprint(problem_bp)
 
 # initialise database
 with app.app_context():
