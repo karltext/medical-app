@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='register-patient'>
+
+      <form action="{{ url_for('patients.create_patient') }}" method="POST">
+            <label for="name">Name</label><br>
+            <input type="text" name="name" placeholder="Name" /><br>
+
+            <label for="age">Age</label><br>
+            <input type="text" name="age" placeholder="age" /><br>
+
+            <label for="gender">gender</label><br>
+            <input type="text" name="gender" placeholder="gender" /><br>
+
+            <label for="height">height</label><br>
+            <input type="text" name="height" placeholder="height" /><br>
+
+            <label for="weight">weight</label><br>
+            <input type="text" name="weight" placeholder="weight" /><br>
+
+            <label for="location">location</label><br>
+            <input type="text" name="location" placeholder="location" /><br>
+
+            <input type="submit" value="Submit" />
+      </form>
+
+</div>
+{% endblock %}
