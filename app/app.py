@@ -11,6 +11,7 @@ from patients import patient_bp
 from lab_managers import lab_manager_bp
 from problems import problem_bp
 
+
 app = Flask(__name__)
 
 # add configurations
