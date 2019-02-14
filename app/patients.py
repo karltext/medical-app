@@ -8,6 +8,7 @@ from flask import url_for
 # import your required models
 from models import db
 from models import Patient
+import jsonpickle
 
 # define your blueprint
 patient_bp = Blueprint('patients', __name__, url_prefix='/patients')
@@ -18,6 +19,7 @@ def view_patient(patient_id):
     'View a single patient profile'
     patient = Patient.query.filter_by(patient_id=patient_id).first()
     return render_template('patients/view.html', patient=patient)
+
 
 # /patients/register
 @patient_bp.route('/register', methods=['GET', 'POST'])
