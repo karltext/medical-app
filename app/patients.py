@@ -33,13 +33,8 @@ def create_patient():
         return ''
     db.session.add(Patient(**request.form))
     db.session.commit()
-    p = session.query(Patient).order_by(Patient.id.desc()).first()
+    p = db.session.query(Patient).order_by(Patient.id.desc()).first()
     url = url_for('patients.view_patient', patient_id=p.patient_id)
     return redirect(url, code=302)
 
-# /patients/register/problem
-@patient_bp.route('/register/problem', methods=['POST'])
-def register_patient_problem():
-    problem_id = request.form['problem_id']
-    patient_id = request.form['patient_id']
 

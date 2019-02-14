@@ -22,8 +22,8 @@
         </tr>
     </table>
     <ul>
-        {% for problem in patient.problems %}
-        <li>{{ problem.name }}</li>
+        {% for report in patient.reports %}
+            <li>{{ report.lab_manager.name }}: {{ report.created }} -- {{ report.description }}</li>
         {% endfor %}
     </ul>
 </div>
