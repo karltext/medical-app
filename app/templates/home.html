@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Patients</h3>
+{% for p in patients %}
+    <p>
+        <a href="{{ url_for('patients.view_patient', patient_id=p.patient_id) }}">
+        {{p.name}}
+        </a>
+    </p>
+{% endfor %}
+
+<h3>Lab Managers</h3>
+{% for lm in lab_managers %}
+    <p>
+        <a href="{{ url_for('lab_managers.view_lab_manager', lm_id=lm.lm_id) }}">
+            {{lm.name }}
+        </a>
+    </p>
+{% endfor %}
+
+
+
+{% endblock %}
