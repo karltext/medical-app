@@ -5,6 +5,8 @@ from flask import jsonify
 
 # import mysqlAlchemy
 from models import db
+from models import Patient
+from models import LabManager
 
 # import views 
 from patients import patient_bp
@@ -20,6 +22,13 @@ app.config.from_pyfile('settings.py')
 app.register_blueprint(patient_bp)
 app.register_blueprint(lab_manager_bp)
 app.register_blueprint(report_bp)
+
+@app.route('/')
+def home():
+    'List all patients an lab managers for demo purposes'
+    context = dict(patients=Patient.query.all(), 
+                   lab_managers=LabManager.query.all())
+    return render_template('home.html', **context)
 
 # initialise database
 with app.app_context():

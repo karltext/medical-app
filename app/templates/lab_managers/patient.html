@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{{ patient.name }}
+{% for r in reports %}
+<p>{{ r.created }} -- {{ r.description }}</p>
+{% endfor %}
+{% endblock %}

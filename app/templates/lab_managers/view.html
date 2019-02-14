@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ lab_manager.name }}</h1>
+<p>location: {{ lab_manager.location }}</p>
+<p><a href="">NEW REPORT</a></p>
+<h2>Report history</h2>
+<ul>
+    {% for report in lab_manager.reports %}
+        <li>{{ report.patient.name }}: {{ report.created }} -- {{ report.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
