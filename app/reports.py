@@ -29,7 +29,8 @@ def create_report():
     db.session.commit()
     # fetch the newly created for display of successful response
     r = db.session.query(Report).order_by(Report.report_id.desc()).first()
-    return jsonify(r.to_dict())
+    # return redirect(url_for())
+    # TODO !!! redirect to lab manager page
 
 # /reports/view/<report_id>
 @report_bp.route('/view/<int:report_id>')
