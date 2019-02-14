@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='viewreports'>
+    <table border='1'>
+        <tr>
+            <th>Report ID</th>
+            <th>Patient ID</th>
+            <th>Lab Manager ID</th>
+            <th>Created</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>{{ report.patient.name }}</td>
+            <td>{{ report.lab_manager.name }}</td>
+            <td>{{ report.created }}</td>
+            <td>{{ report.description }}</td>
+        </tr>
+    </table>
+
+</div>
+{% endblock %}

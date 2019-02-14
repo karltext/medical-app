@@ -18,7 +18,9 @@ def view_patient_reports(patient_id):
 @report_bp.route('/lab-manager/<int:lm_id>')
 def view_lab_manager_reports(lm_id):
     lmreports = Report.query.filter_by(lm_id=lm_id)
-    return render_template('.html', lmreports=lmreports)
+    return render_template('viewreport.html', lmreports=lmreports)
+
+
 
 # @report_bp_route('/register')
 # def register_report():
