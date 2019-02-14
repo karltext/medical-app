@@ -9,8 +9,6 @@ from models import db
 # import views 
 from patients import patient_bp
 from lab_managers import lab_manager_bp
-from problems import problem_bp
-
 
 app = Flask(__name__)
 
@@ -20,7 +18,6 @@ app.config.from_pyfile('settings.py')
 # register your blueprints here
 app.register_blueprint(patient_bp)
 app.register_blueprint(lab_manager_bp)
-app.register_blueprint(problem_bp)
 
 # initialise database
 with app.app_context():
