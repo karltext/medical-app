@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class='register-report'>
-
       <form action="{{ url_for('reports.register_report') }}" method="POST">
-            <label for="report_id">Report ID</label><br>
-            <input type="text" name="report_id" placeholder="report_id" /><br>
 
             <label for="patient_id">Patient ID</label><br>
             <input type="text" name="patient_id" placeholder="patient_id" /><br>
@@ -20,7 +17,6 @@
 
             <input type="submit" value="Submit" />
       </form>
-
 </div>
 {% endblock %}
 

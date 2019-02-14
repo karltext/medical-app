@@ -12,6 +12,14 @@ from models import Report
 # define your blueprint
 report_bp = Blueprint('reports', __name__, url_prefix='/reports')
 
+# /reports/register
+@report_bp.route('/register', methods=['POST', 'GET'])
+def register_report():
+    'Api end-point for creating a new user'
+    db.session.add(Report(**request.form))
+    db.session.commit()
+    return render_template('/reports/register.html')
+
 # /reports/create
 @report_bp.route('/create', methods=['POST', 'GET'])
 def create_report():
