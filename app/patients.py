@@ -17,12 +17,21 @@ def view_patient(patient_id):
     return render_template('profile.html', patient=patient)
 
 # /patients/register
-@patient_bp.route('/register', methods=['POST'])
+@patient_bp.route('/register', methods=['GET','POST'])
 def register_patient():
+    '''
     p = Patient(**request.form)
     db.session.add(p)
     db.session.commit()
     return jsonify(p.to_dict())
+    return render_template('registerpatient.html', p=p)
+    '''
+    if request.form:
+        regpatient = Patient(name=request.form.get("name"), age=request.form.get("age"), gender=request.form.get("gender"), 
+                             height=request.form.get("height"), weight=request.form.get("weight"), location=request.form.get("location"))
+        db.session.add(regpatient)
+        db.session.commit()
+    return render_template("registerpatient.html") 
 
 # /patients/register/problem
 @patient_bp.route('/register/problem', methods=['POST'])
