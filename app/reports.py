@@ -2,6 +2,8 @@ from flask import Blueprint
 from flask import request
 from flask import jsonify
 from flask import render_template
+from flask import redirect
+from flask import url_for
 
 # import your required models
 from models import db
@@ -21,14 +23,19 @@ def view_lab_manager_reports(lm_id):
     lmreports = Report.query.filter_by(lm_id=lm_id)
     return render_template('viewreport.html', lmreports=lmreports)
 
+#/reports/register
+@report_bp.route('/register', methods=['POST', 'GET'])
+def register_report():
+    'Api end-point for creating a new user'
+    r = Report(**request.form)
+    db.session.add(r)
+    db.session.commit()
+    #return jsonify(r.to_dict())
+    return render_template('/reports/createreport.html', r=r)
 
 
-# @report_bp_route('/register')
-# def register_report():
-    
-
-# /reports/new
-@report_bp.route('/create', methods=['POST'])
+# /reports/create
+@report_bp.route('/create', methods=['POST', 'GET'])
 def create_report():
     'Api end-point for creating a new report'
     # add the report
