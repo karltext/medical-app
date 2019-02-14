@@ -21,6 +21,7 @@
             <td>{{ patient.location }}</td>
         </tr>
     </table>
+    <h2>Report history</h2>
     <ul>
         {% for report in patient.reports %}
             <li>{{ report.lab_manager.name }}: {{ report.created }} -- {{ report.description }}</li>
