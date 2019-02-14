@@ -1,9 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class='patients'>
-    <p>{{ patient.name }}</p>
-    <ul>{% for problem in patient.problems %}
-    <li>{{ problem.name }}</li>
-    {% endfor %}</ul>
+    <table border='1'>
+        <tr>
+            <th>Patient ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Location</th>
+        </tr>
+        <tr>
+            <td>{{ patient.patient_id }}</td>
+            <td>{{ patient.name }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.height }}</td>
+            <td>{{ patient.weight }}</td>
+            <td>{{ patient.location }}</td>
+        </tr>
+    </table>
+    <ul>
+        {% for problem in patient.problems %}
+        <li>{{ problem.name }}</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
