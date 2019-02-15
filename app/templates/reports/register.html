@@ -4,18 +4,18 @@
       <form action="{{ url_for('reports.register_report') }}" method="POST">
 
             <label for="patient_id">Patient ID</label><br>
-            <input type="text" name="patient_id" placeholder="patient_id" /><br>
+            <input type="text" name="patient_id" placeholder="patient_id" id="patient_id"/><br>
 
             <label for="lm_id">Lab Manager ID</label><br>
-            <input type="text" name="lm_id" placeholder="lm_id" /><br>
+            <input type="text" name="lm_id" placeholder="lm_id" id="lm_id"/><br>
 
             <label for="created">Created</label><br>
-            <input type="date" name="created" placeholder="created" /><br>
+            <input type="date" name="created" placeholder="created" id="created"/><br>
 
             <label for="description">Description</label><br>
-            <input type="text" name="description" placeholder="description" /><br>
+            <input type="text" name="description" placeholder="description" id="description"/><br>
 
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" id="submit"/>
       </form>
 </div>
 {% endblock %}

@@ -8,6 +8,7 @@ from flask import url_for
 # import your required models
 from models import db
 from models import Report
+import jsonpickle
 
 # define your blueprint
 report_bp = Blueprint('reports', __name__, url_prefix='/reports')
@@ -38,3 +39,12 @@ def view_report(report_id):
     'View a single report'
     report = Report.query.filter_by(report_id=report_id).first()
     return render_template('reports/view.html', report=report)
+
+@report_bp.route("/view-all")
+def view_all_reports():
+    reports = Report.query.all()
+    report_list = []
+    for r in reports:
+        report_list.append(r)
+    
+    return jsonpickle.encode(report_list)

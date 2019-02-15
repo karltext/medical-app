@@ -20,6 +20,15 @@ def view_patient(patient_id):
     patient = Patient.query.filter_by(patient_id=patient_id).first()
     return render_template('patients/view.html', patient=patient)
 
+@patient_bp.route("/view-all-patients")
+def view_all_patients():
+    patients = Patient.query.all()
+    patient_list = []
+    for p in patients:
+        patient_list.append(p)
+    
+    return jsonpickle.encode(patient_list)
+
 
 # /patients/register
 @patient_bp.route('/register', methods=['GET', 'POST'])
