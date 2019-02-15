@@ -36,6 +36,7 @@ def register_patient():
     'Form page to for users to register a new patient'
     return render_template('patients/register.html')
 
+
 # /patients/new
 @patient_bp.route('/create', methods=['GET', 'POST'])
 def create_patient():

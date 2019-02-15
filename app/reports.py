@@ -21,6 +21,7 @@ def register_report():
     db.session.commit()
     return render_template('/reports/register.html')
 
+
 # /reports/create
 @report_bp.route('/create', methods=['POST', 'GET'])
 def create_report():
@@ -32,6 +33,9 @@ def create_report():
     r = db.session.query(Report).order_by(Report.report_id.desc()).first()
     # return redirect(url_for())
     # TODO !!! redirect to lab manager page
+    if request.method == 'POST':
+        return redirect(url_for('reports.view_report', report_id=r.report_id))
+    
 
 # /reports/view/<report_id>
 @report_bp.route('/view/<int:report_id>')

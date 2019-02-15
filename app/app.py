@@ -29,6 +29,7 @@ def home():
     context = dict(patients=Patient.query.all(), 
                    lab_managers=LabManager.query.all())
     return render_template('home.html', **context)
+    #return render_template('home.html', **context)
 
 # initialise database
 with app.app_context():

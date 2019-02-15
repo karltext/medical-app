@@ -2,7 +2,7 @@
 {% block content %}
 <h1>{{ lab_manager.name }}</h1>
 <p>location: {{ lab_manager.location }}</p>
-<p><a href="">NEW REPORT</a></p>
+<p><a href="http://127.0.0.1:8000/reports/register">NEW REPORT</a></p>
 <h2>Report history</h2>
 <ul>
     {% for report in lab_manager.reports %}
@@ -10,3 +10,4 @@
     {% endfor %}
 </ul>
 {% endblock %}
+
