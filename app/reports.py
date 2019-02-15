@@ -20,9 +20,8 @@ def register_report():
     db.session.commit()
     return render_template('/reports/register.html')
 
-
 # /reports/create
-@report_bp.route('/create', methods=['POST', 'GET'])
+@report_bp.route('/create', methods=['POST'])
 def create_report():
     'Api end-point for creating a new report'
     # add the report
@@ -30,11 +29,7 @@ def create_report():
     db.session.commit()
     # fetch the newly created for display of successful response
     r = db.session.query(Report).order_by(Report.report_id.desc()).first()
-    # return redirect(url_for())
-    # TODO !!! redirect to lab manager page
-    if request.method == 'POST':
-        return redirect(url_for('lab_managers/view/1'))
-    
+    return redirect(url_for('reports.view_report', report_id=r.report_id), code=302)
 
 # /reports/view/<report_id>
 @report_bp.route('/view/<int:report_id>')
@@ -42,3 +37,7 @@ def view_report(report_id):
     'View a single report'
     report = Report.query.filter_by(report_id=report_id).first()
     return render_template('reports/view.html', report=report)
+
+@report_bp.route("/list")
+def view_all_reports():
+    return jsonify([r.to_dict() for r in  Report.query.all()])

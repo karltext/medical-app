@@ -19,8 +19,13 @@ def view_patient(patient_id):
     patient = Patient.query.filter_by(patient_id=patient_id).first()
     return render_template('patients/view.html', patient=patient)
 
+@patient_bp.route("/list")
+def view_all_patients():
+    return jsonify([p.to_dict() for p in Patient.query.all()])
+
+
 # /patients/register
-@patient_bp.route('/register', methods=['GET', 'POST'])
+@patient_bp.route('/register', methods=['GET'])
 def register_patient():
     'Form page to for users to register a new patient'
     return render_template('patients/register.html')
