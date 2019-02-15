@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class='register-patient'>
-
-      <form action="{{ url_for('patients.create_patient') }}" method="POST">
-            <label for="name">Name</label><br>
-            <input type="text" name="name" placeholder="Name" id="name"/><br>
-
-            <label for="age">Age</label><br>
-            <input type="text" name="age" placeholder="age" id="age"/><br>
-
-            <label for="gender">gender</label><br>
-            <input type="text" name="gender" placeholder="gender" id="gender"/><br>
-
-            <label for="height">height</label><br>
-            <input type="text" name="height" placeholder="height" id="height"/><br>
-
-            <label for="weight">weight</label><br>
-            <input type="text" name="weight" placeholder="weight" id="weight"/><br>
-
-            <label for="location">location</label><br>
-            <input type="text" name="location" placeholder="location" id="location"/><br>
-
-            <input type="submit" value="Submit" id="submit"/>
-      </form>
-
+<div class='row'>
+      <div class="col-sm-6">
+            <form action="{{ url_for('patients.create_patient') }}" method="POST">
+                  <div class="form-group">
+                        <label for="name">Name</label><br>
+                        <input class="form-control" type="text" name="name" placeholder="Name" id="name"/><br>
+                  </div>
+                  <div class="form-group">
+                        <label for="age">Age</label><br>
+                        <input class="form-control" type="text" name="age" placeholder="age" id="age"/><br>
+                  </div>
+                  <div class="form-group">
+                        <label for="gender">gender</label><br>
+                        <input class="form-control" type="text" name="gender" placeholder="gender" id="gender"/><br>
+                  </div>
+                  <div class="form-group">
+                        <label for="height">height</label><br>
+                        <input class="form-control" type="text" name="height" placeholder="height" id="height"/><br>
+                  </div>
+                  <div class="form-group">
+                        <label for="weight">weight</label><br>
+                        <input class="form-control" type="text" name="weight" placeholder="weight" id="weight"/><br>
+                  </div>
+                  <div class="form-group">
+                        <label for="location">location</label><br>
+                        <input class="form-control" type="text" name="location" placeholder="location" id="location"/><br>
+                  </div>
+                  <div class="form-group">
+                        <button type="submit" value="submit" class="btn btn-primary" id="submit">Submit</button>
+                  </div>
+            </form>
+      </div>
 </div>
 {% endblock %}

@@ -8,7 +8,6 @@ from flask import url_for
 # import your required models
 from models import db
 from models import Patient
-import jsonpickle
 
 # define your blueprint
 patient_bp = Blueprint('patients', __name__, url_prefix='/patients')
@@ -20,16 +19,14 @@ def view_patient(patient_id):
     patient = Patient.query.filter_by(patient_id=patient_id).first()
     return render_template('patients/view.html', patient=patient)
 
-
 # /patients/register
 @patient_bp.route('/register', methods=['GET', 'POST'])
 def register_patient():
     'Form page to for users to register a new patient'
     return render_template('patients/register.html')
 
-
 # /patients/new
-@patient_bp.route('/create', methods=['GET', 'POST'])
+@patient_bp.route('/create', methods=['POST'])
 def create_patient():
     'Api end-point for creating a new user'
     if not request.form: 

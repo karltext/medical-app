@@ -1,23 +1,60 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
+    <h1>System Admin</h1>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Patients</h3>
+        <table class="table table-stripped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in patients %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('patients.view_patient', patient_id=p.patient_id) }}">
+                            {{ p.name }}
+                        </a>
+                        </td>
+                    <td>{{ p.location }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-outline-primary">
+            <a href="{{ url_for('patients.register_patient') }}">New Patient</a>
+        </button>
+    </div>
+    <div class="col-sm-6">
+        <h3>Lab Managers</h3>
+        <table class="table table-stripped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lm in lab_managers %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('lab_managers.view_lab_manager', lm_id=lm.lm_id) }}">
+                            {{ lm.name }}
+                        </a>
+                    </td>
+                    <td>{{ lm.location }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<h3>Patients</h3>
-{% for p in patients %}
-    <p>
-        <a href="{{ url_for('patients.view_patient', patient_id=p.patient_id) }}">
-        {{p.name}}
-        </a>
-    </p>
-{% endfor %}
-
-<h3>Lab Managers</h3>
-{% for lm in lab_managers %}
-    <p>
-        <a href="{{ url_for('lab_managers.view_lab_manager', lm_id=lm.lm_id) }}">
-            {{lm.name }}
-        </a>
-    </p>
-{% endfor %}
 
 
 
