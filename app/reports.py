@@ -33,7 +33,7 @@ def create_report():
     # return redirect(url_for())
     # TODO !!! redirect to lab manager page
     if request.method == 'POST':
-        return redirect(url_for('lab_managers/view/1'))
+        return redirect(url_for('reports.view_report', report_id=r.report_id))
     
 
 # /reports/view/<report_id>

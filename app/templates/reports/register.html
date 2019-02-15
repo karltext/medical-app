@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class='register-report'>
-      <form action="{{ url_for('reports.register_report') }}" method="POST">
+      <form action="{{ url_for('reports.create_report') }}" method="POST">
 
             <label for="patient_id">Patient ID</label><br>
             <input type="text" name="patient_id" placeholder="patient_id" /><br>
