@@ -6,7 +6,7 @@
 <h2>Report history</h2>
 <ul>
     {% for report in lab_manager.reports %}
-        <li>{{ report.patient.name }}: {{ report.created }} -- {{ report.description }}</li>
+        <li>{{ report.patient.name }}: {{ report.created.strftime('%Y-%m-%d') }} -- {{ report.description }}</li>
     {% endfor %}
 </ul>
 {% endblock %}

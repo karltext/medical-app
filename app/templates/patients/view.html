@@ -1,31 +1,48 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class='patients'>
-    <table border='1'>
-        <tr>
-            <th>Patient ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Location</th>
-        </tr>
-        <tr id ="info">
-            <td>{{ patient.patient_id }}</td>
-            <td>{{ patient.name }}</td>
-            <td>{{ patient.age }}</td>
-            <td>{{ patient.gender }}</td>
-            <td>{{ patient.height }}</td>
-            <td>{{ patient.weight }}</td>
-            <td>{{ patient.location }}</td>
-        </tr>
-    </table>
-    <h2>Report history</h2>
-    <ul>
-        {% for report in patient.reports %}
-            <li>{{ report.lab_manager.name }}: {{ report.created }} -- {{ report.description }}</li>
-        {% endfor %}
-    </ul>
+    <h1>{{ patient.name }}'s records</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Basic info</h3>
+            <table class="table table-border">
+                <tr>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>Location</th>
+                </tr>
+                <tr id="info">
+                    <td>{{ patient.age }}</td>
+                    <td>{{ patient.gender }}</td>
+                    <td>{{ patient.height }}</td>
+                    <td>{{ patient.weight }}</td>
+                    <td>{{ patient.location }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Report history</h2>
+            <table class="table table-border">
+                <tr>
+                    <th>Lab Manager</th>
+                    <th>Date</th>
+                    <th>Report</th>
+                    <th>Location</th>
+                </tr>
+                {% for report in patient.reports %}
+                <tr id="info">
+                    <td>{{ report.lab_manager.name }}</td>
+                    <td>{{ report.created.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ report.description }}</td>
+                    <td>{{ report.lab_manager.location }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -19,10 +19,10 @@ def view_patient(patient_id):
     patient = Patient.query.filter_by(patient_id=patient_id).first()
     return render_template('patients/view.html', patient=patient)
 
+# /patients/list
 @patient_bp.route("/list")
 def view_all_patients():
     return jsonify([p.to_dict() for p in Patient.query.all()])
-
 
 # /patients/register
 @patient_bp.route('/register', methods=['GET'])
